@@ -49,6 +49,7 @@ class MessageBuilder:
     message = {
         "message_type" : self.ASK_MESSAGE,
         "hole_card": hole_card,
+        "player":player,
         "valid_actions": valid_actions,
         "round_state": DataEncoder.encode_round_state(state),
         "action_histories": DataEncoder.encode_action_histories(state["table"])
