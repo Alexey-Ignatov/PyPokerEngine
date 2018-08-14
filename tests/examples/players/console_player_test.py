@@ -37,7 +37,7 @@ class ConsolePlayerTest(BaseUnitTest):
     mock_input = self.__gen_raw_input_mock(['f'])
     player = ConsolePlayer(mock_input)
     player.set_uuid("dummy")
-    action, amount = player.declare_action(self.valid_actions, None, self.round_state)
+    action, amount = player.declare_action(self.valid_actions, None, self.round_state, None)
     self.eq('fold', action)
     self.eq(0, amount)
 
@@ -45,7 +45,7 @@ class ConsolePlayerTest(BaseUnitTest):
     mock_input = self.__gen_raw_input_mock(['c'])
     player = ConsolePlayer(mock_input)
     player.set_uuid("dummy")
-    action, amount = player.declare_action(self.valid_actions, None, self.round_state)
+    action, amount = player.declare_action(self.valid_actions, None, self.round_state, None)
     self.eq('call', action)
     self.eq(10, amount)
 
@@ -53,7 +53,7 @@ class ConsolePlayerTest(BaseUnitTest):
     mock_input = self.__gen_raw_input_mock(['r', '15'])
     player = ConsolePlayer(mock_input)
     player.set_uuid("dummy")
-    action, amount = player.declare_action(self.valid_actions, None, self.round_state)
+    action, amount = player.declare_action(self.valid_actions, None, self.round_state, None)
     self.eq('raise', action)
     self.eq(15, amount)
 
@@ -61,7 +61,7 @@ class ConsolePlayerTest(BaseUnitTest):
     mock_input = self.__gen_raw_input_mock(['r', '14', '105'])
     player = ConsolePlayer(mock_input)
     player.set_uuid("dummy")
-    action, amount = player.declare_action(self.valid_actions, None, self.round_state)
+    action, amount = player.declare_action(self.valid_actions, None, self.round_state, None)
     self.eq('raise', action)
     self.eq(105, amount)
 

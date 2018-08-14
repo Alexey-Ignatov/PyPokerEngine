@@ -11,7 +11,7 @@ class RandomPlayer(BasePokerPlayer):
     scaled_ratio = [ 1.0 * num / sum(ratio) for num in ratio]
     self.fold_ratio, self.call_ratio, self.raise_ratio = scaled_ratio
 
-  def declare_action(self, valid_actions, hole_card, round_state):
+  def declare_action(self, valid_actions, hole_card, round_state, msg):
     choice = self.__choice_action(valid_actions)
     action = choice["action"]
     amount = choice["amount"]

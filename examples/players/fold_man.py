@@ -2,7 +2,7 @@ from pypokerengine.players import BasePokerPlayer
 
 class FoldMan(BasePokerPlayer):
 
-  def declare_action(self, valid_actions, hole_card, round_state):
+  def declare_action(self, valid_actions, hole_card, round_state, msg):
     return 'fold', 0
 
   def receive_game_start_message(self, game_info):

@@ -28,7 +28,7 @@ class EmulatorPlayer(BasePokerPlayer):
             player_model = self.my_model if uuid == self.uuid else self.opponents_model
             self.emulator.register_player(uuid, player_model)
 
-    def declare_action(self, valid_actions, hole_card, round_state):
+    def declare_action(self, valid_actions, hole_card, round_state, msg):
         try_actions = [MyModel.FOLD, MyModel.CALL, MyModel.MIN_RAISE, MyModel.MAX_RAISE]
         action_results = [0 for i in range(len(try_actions))]
 
@@ -48,7 +48,7 @@ class EmulatorPlayer(BasePokerPlayer):
 
         best_action = max(zip(action_results, try_actions))[1]
         self.my_model.set_action(best_action)
-        return self.my_model.declare_action(valid_actions, hole_card, round_state)
+        return self.my_model.declare_action(valid_actions, hole_card, round_state, msg)
 
     def _setup_game_state(self, round_state, my_hole_card):
         game_state = restore_game_state(round_state)
@@ -83,7 +83,7 @@ class MyModel(BasePokerPlayer):
     def set_action(self, action):
         self.action = action
 
-    def declare_action(self, valid_actions, hole_card, round_state):
+    def declare_action(self, valid_actions, hole_card, round_state, msg):
         if self.FOLD == self.action:
             return valid_actions[0]['action'], valid_actions[0]['amount']
         elif self.CALL == self.action:

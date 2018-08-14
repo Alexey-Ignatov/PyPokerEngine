@@ -15,7 +15,7 @@ class BasePokerPlayer(object):
   def __init__(self):
     pass
 
-  def declare_action(self, valid_actions, hole_card, round_state):
+  def declare_action(self, valid_actions, hole_card, round_state, msg):
     err_msg = self.__build_err_msg("declare_action")
     raise NotImplementedError(err_msg)
 
@@ -45,7 +45,7 @@ class BasePokerPlayer(object):
   def respond_to_ask(self, message):
     """Called from Dealer when ask message received from RoundManager"""
     valid_actions, hole_card, round_state = self.__parse_ask_message(message)
-    return self.declare_action(valid_actions, hole_card, round_state)
+    return self.declare_action(valid_actions, hole_card, round_state, message)
 
   def receive_notification(self, message):
     """Called from Dealer when notification received from RoundManager"""

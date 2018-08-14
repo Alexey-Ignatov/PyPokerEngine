@@ -397,7 +397,7 @@ class TestPlayer(FoldMan):
         self.actions = actions
         self.counter = 0
 
-    def declare_action(self, _valid_actions, _hole_card, _round_state):
+    def declare_action(self, _valid_actions, _hole_card, _round_state, msg):
         action, amount = self.actions[self.counter]
         self.counter += 1
         return action, amount

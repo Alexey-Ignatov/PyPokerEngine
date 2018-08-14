@@ -161,7 +161,7 @@ class RecordMan(FoldMan):
   def __init__(self):
     self.received_msgs = []
 
-  def declare_action(self, valid_actions, hole_card, round_state):
+  def declare_action(self, valid_actions, hole_card, round_state, msg):
     self.received_msgs.append("declare_action")
     return 'fold', 0
 
